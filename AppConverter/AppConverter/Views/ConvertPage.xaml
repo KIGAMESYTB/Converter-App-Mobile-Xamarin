@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppConverter.Views.ConvertPage"
+             BackgroundColor="#333">
+    <ContentPage.Content>
+        <StackLayout Margin="20,20">
+            <StackLayout VerticalOptions="FillAndExpand" x:Name="stack">
+                <Label x:Name="lblNameConvert" Text="Weight Convert" FontSize="Large" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,0,0,20"/>
+                <Frame BackgroundColor="White" Padding="0" CornerRadius="5">
+                    <StackLayout Orientation="Horizontal">
+                        <SearchBar x:Name="searchBarElement" Placeholder="Enter a nombre..." MaxLength="8" WidthRequest="200" HorizontalOptions="FillAndExpand" Keyboard="Numeric" TextChanged="SearchBar_TextChanged"/>
+                        <Button x:Name="btnUnit" HorizontalOptions="FillAndExpand" WidthRequest="100" TextColor="Black" Clicked="BtnUnit_Clicked"/>
+                    </StackLayout>
+                </Frame>
+                <StackLayout IsVisible="false" x:Name="stackElementConvert">
+                    <ListView x:Name="ListViewUnitMesure" RowHeight="80" BackgroundColor="Transparent" VerticalScrollBarVisibility="Never" 
+                                  SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame CornerRadius="5" BackgroundColor="{Binding BackColorHex}" HorizontalOptions="FillAndExpand" Margin="0,0,0,10" >
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Row="0" Grid.Column="0" Text="{Binding Value}" FontSize="Large" TextColor="White" VerticalOptions="CenterAndExpand" Margin="0,0,10,0"/>
+                                            <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                                <Label Text="{Binding Unit_Name}" FontSize="Medium" TextColor="White" VerticalOptions="CenterAndExpand"/>
+                                                <Label Text="{Binding Unit_ABRG}" FontSize="Medium" TextColor="White" VerticalOptions="CenterAndExpand"/>
+                                            </StackLayout>
+
+                                        </Grid>
+                                    </Frame>
+                                    
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                
+
+            </StackLayout>
+
+            <Frame BackgroundColor="#333" BorderColor="Wheat" >
+                <Button Clicked="BtnFormules_Clicked" Text="Formules" BackgroundColor="Transparent" TextColor="White" TextTransform="Uppercase" FontAttributes="Bold" FontSize="Medium" />
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
